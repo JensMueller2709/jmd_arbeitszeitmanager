@@ -1,0 +1,135 @@
+﻿<Page
+    x:Class="JMD_Arbeitszeitmanager.Views.SettingsPage"
+    Style="{DynamicResource MahApps.Styles.Page}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:converters="clr-namespace:JMD_Arbeitszeitmanager.Converters"
+    xmlns:models="clr-namespace:JMD_Arbeitszeitmanager.Models"
+    xmlns:properties="clr-namespace:JMD_Arbeitszeitmanager.Properties"
+    mc:Ignorable="d"
+    d:DesignHeight="800" d:DesignWidth="800">
+    <Page.Resources>
+        <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" EnumType="models:AppTheme" />
+    </Page.Resources>
+    <ScrollViewer>
+        <Grid Margin="{StaticResource SmallTopBottomMargin}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Style="{StaticResource PageTitleStyle}"
+                Text="{x:Static properties:Resources.SettingsPageTitle}" />
+            <StackPanel
+                x:Name="ContentArea"
+                Grid.Row="1"
+                Margin="{StaticResource MediumLeftRightMargin}">
+
+                <TextBlock
+                    Margin="{StaticResource SmallTopMargin}"
+                    Style="{StaticResource SubtitleTextStyle}"
+                    Text="{x:Static properties:Resources.SettingsPagePersonalizationTitle}" />
+                <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
+                    <TextBlock
+                        Style="{StaticResource BodyTextStyle}"
+                        Text="{x:Static properties:Resources.SettingsPageChooseThemeText}" />
+                    <StackPanel Margin="{StaticResource XSmallTopMargin}">
+                        <RadioButton
+                            GroupName="AppTheme"
+                            Content="{x:Static properties:Resources.SettingsPageRadioButtonLightTheme}"
+                            FontSize="{StaticResource MediumFontSize}"
+                            Checked="OnLightChecked"
+                            IsChecked="{Binding Theme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light}" />
+                        <RadioButton
+                            GroupName="AppTheme"
+                            Content="{x:Static properties:Resources.SettingsPageRadioButtonDarkTheme}"
+                            Margin="{StaticResource XSmallTopMargin}"
+                            FontSize="{StaticResource MediumFontSize}"
+                            Checked="OnDarkChecked"
+                            IsChecked="{Binding Theme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <TextBlock
+                    Margin="{StaticResource SmallTopMargin}"
+                    Style="{StaticResource SubtitleTextStyle}"
+                    Text="Datenbank" />
+                
+                <StackPanel>
+                    <Grid Margin="{StaticResource SmallTopBottomMargin}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="400"/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="15">User</TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="15">Passwort</TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="15">URL</TextBlock>
+                        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="15">Port</TextBlock>
+                        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="15">Datenbankname</TextBlock>
+                        <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="15">SSL CA</TextBlock>
+                        <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="15">SSL Key</TextBlock>
+                        <TextBlock Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" FontSize="15">SSL Cert</TextBlock>
+
+                        <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="15" Name="tb_user"></TextBox>
+                        <PasswordBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontSize="15" Name="tb_pw"></PasswordBox>
+                        <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontSize="15" Name="tb_url"></TextBox>
+                        <TextBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" FontSize="15" Name="tb_port"></TextBox>
+                        <TextBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" FontSize="15" Name="tb_db"></TextBox>
+                        
+                        <TextBox Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" FontSize="15" Name="tb_sslCa"></TextBox>
+                        <Button Grid.Row="5" Grid.Column="2" Name="btn_chooseFileSslCA" Click="btn_chooseFileSslCA_Click">Datei auswählen</Button>
+                        <TextBox Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" FontSize="15" Name="tb_sslKey"></TextBox>
+                        <Button Grid.Row="6" Grid.Column="2" Name="btn_chooseFileSslKey" Click="btn_chooseFileSslKey_Click">Datei auswählen</Button>
+                        <TextBox Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" FontSize="15" Name="tb_sslCert"></TextBox>
+                        <Button Grid.Row="7" Grid.Column="2" Name="btn_chooseFileSslCert" Click="btn_chooseFileSslCert_Click">Datei auswählen</Button>
+
+                    </Grid>
+
+                    <Button Name="btn_save" Click="btn_save_Click" Width="200" HorizontalAlignment="Left">Speichern</Button>
+                    <Button Name="btn_cancel" Click="btn_cancel_Click" Width="200" HorizontalAlignment="Left">Abbrechen</Button>
+                    
+                </StackPanel>
+
+                <Separator Margin="40"/>
+
+                <TextBlock
+                    Margin="{StaticResource SmallTopMargin}"
+                    Style="{StaticResource SubtitleTextStyle}"
+                    Text="{x:Static properties:Resources.SettingsPageAboutTitle}" />
+                <Image  Source="../Assets/Images/logo_jmd.png" Opacity="1" Width="200" Height="auto" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1"/>
+                <TextBlock
+                    Text="{Binding VersionDescription, Mode=OneWay}"
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{StaticResource BodyTextStyle}" />
+                <TextBlock
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{StaticResource BodyTextStyle}"
+                    Text="{x:Static properties:Resources.SettingsPageAboutText}" />
+
+                <TextBlock
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{StaticResource BodyTextStyle}"
+                    Text="{x:Static properties:Resources.CurrentVersion}" />
+
+                <TextBlock Text="JMD - Business IT Solutions"   />
+                <TextBlock Text="Jens Müller"   />
+                <TextBlock Text="jens.mueller@jmd-it.de"   />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

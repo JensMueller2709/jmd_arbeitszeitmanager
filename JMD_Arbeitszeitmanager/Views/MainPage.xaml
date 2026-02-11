@@ -1,0 +1,264 @@
+﻿<Page
+    x:Class="JMD_Arbeitszeitmanager.Views.MainPage"
+    Style="{DynamicResource MahApps.Styles.Page}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:properties="clr-namespace:JMD_Arbeitszeitmanager.Properties"
+    mc:Ignorable="d"
+    d:DesignHeight="1000" d:DesignWidth="1500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="48" />
+            <RowDefinition Height="300" />
+            <RowDefinition Height="160" />
+            <RowDefinition Height="48" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Style="{StaticResource PageTitleStyle}"
+            Margin="{StaticResource MediumLeftMargin}"
+            Text="{x:Static properties:Resources.MainPageTitle}" />
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <TextBlock  FontSize="20" Margin="20,0,0,0" VerticalAlignment="Center">Arbeitsmonate ohne 3 monatige Pause</TextBlock>
+
+            <ListBox Name="lb_filter" SelectionChanged="lb_filter_SelectionChanged" Margin="30,5,5,5">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation='Horizontal'/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Width" Value="100" />
+                        <Setter Property="FontSize" Value="18"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+
+                <ListBoxItem Width="50" >
+                    Alle
+                </ListBoxItem>
+                <ListBoxItem >
+                    über 10
+                </ListBoxItem>
+                <ListBoxItem >
+                    über 13
+                </ListBoxItem>
+            </ListBox>
+
+            <ListBox Name="lb_filter_worker" SelectionChanged="lb_filter_worker_SelectionChanged" Margin="30,5,5,5">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation='Horizontal'/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Width" Value="100" />
+                        <Setter Property="FontSize" Value="18"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+
+                <ListBoxItem Width="50" >
+                    Alle
+                </ListBoxItem>
+                <ListBoxItem >
+                    Aktive
+                </ListBoxItem>
+                <ListBoxItem >
+                    Inaktive
+                </ListBoxItem>
+            </ListBox>
+
+        </StackPanel>
+
+
+        <!--
+        <DataGrid 
+            Name="data_grid_overview" 
+            Grid.Row="2" 
+            ItemsSource="{Binding}" 
+            AutoGenerateColumns="True"
+            SelectionMode="single"
+            SelectionChanged="data_grid_overview_SelectionChanged"
+            Margin="{StaticResource MediumLeftRightMargin}"
+            
+            />
+        -->
+
+
+        
+            <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Grid.Row="2" Margin="20,10,0,0">
+
+                <Grid 
+            Name="grid_workingTimes" 
+           
+            Margin="{StaticResource MediumLeftRightMargin}"
+            />
+
+            </ScrollViewer>
+       
+
+
+
+
+        <Grid
+            Grid.Row="3"
+            Margin="{StaticResource MediumLeftRightMargin}"
+            Background="{DynamicResource MahApps.Brushes.Gray10}">
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="270"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock FontSize="20" Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom">Auswahl Mitarbeiter</TextBlock>
+
+            <ListBox 
+                Grid.Row="1"
+                Grid.RowSpan="4"
+                Grid.Column="0"
+                Name="combo_worker" 
+                ItemsSource="{Binding workerNameList}" 
+                SelectionChanged="combo_worker_SelectionChanged"
+                />
+
+            <TextBlock FontSize="20" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom">Auswahl Kunde</TextBlock>
+
+            <ListBox 
+                Grid.Row="1"
+                Grid.RowSpan="4"
+                Grid.Column="1"
+                Name="combo_costumer" 
+                ItemsSource="{Binding costumersList}" 
+                SelectionChanged="combo_costumer_SelectionChanged"
+                />
+
+
+            <TextBlock Grid.Column="2" Grid.Row="0"  Margin="20,0,0,0" Name="worker" FontSize="25" VerticalAlignment="Center"></TextBlock>
+
+            <TextBlock Margin="20,0,0,0" Grid.Column="2" Grid.Row="1" FontSize="15" VerticalAlignment="Center">Gebundene Zeit in Tagen / Monate</TextBlock>
+            <TextBlock Grid.Column="3" Grid.Row="1" Name="workingDays" FontSize="15" VerticalAlignment="Center"></TextBlock>
+
+            <TextBlock Margin="20,0,0,0" Grid.Column="2" Grid.Row="2" FontSize="15" VerticalAlignment="Center">Erste relevante Schicht</TextBlock>
+            <TextBlock Grid.Column="3" Grid.Row="2" Name="firstSchicht" FontSize="15" VerticalAlignment="Center"></TextBlock>
+
+            <TextBlock Margin="20,0,0,0" Grid.Column="2" Grid.Row="3" FontSize="15" VerticalAlignment="Center">Letzte gefahrene Schicht</TextBlock>
+            <TextBlock Grid.Column="3" Grid.Row="3" Name="lastSchicht" FontSize="15" VerticalAlignment="Center"></TextBlock>
+
+            <!--
+            <TextBlock Margin="5,0,0,0" Grid.Column="1" Grid.Row="4" FontSize="15" VerticalAlignment="Center">Nächster Problemlose Einsatz ab</TextBlock>
+            <TextBlock Grid.Column="2" Grid.Row="4" Name="nextSchicht" FontSize="15" VerticalAlignment="Center"></TextBlock>
+            -->
+
+            <TextBlock Grid.Column="4" Grid.Row="0"  Margin="5,0,0,0" FontSize="20" VerticalAlignment="Bottom">Daten</TextBlock>
+
+            <TextBlock Grid.Column="4" Grid.Row="1" Margin="5,0,0,0" FontSize="15" VerticalAlignment="Center">Heute </TextBlock>
+            <TextBlock Grid.Column="5" Grid.Row="1" Margin="5,0,0,0" Name="today" FontSize="15" VerticalAlignment="Center"></TextBlock>
+
+            <TextBlock Grid.Column="4" Grid.Row="2" Margin="5,0,0,0" FontSize="15" VerticalAlignment="Center">Freie Tage</TextBlock>
+            <TextBlock Grid.Column="5" Grid.Row="2" Margin="5,0,0,0" Name="daysToLastSchicht" FontSize="15" VerticalAlignment="Center"></TextBlock>
+
+            <TextBlock Grid.Column="4" Grid.Row="3" Margin="5,0,0,0" FontSize="15" VerticalAlignment="Center">Reset ab </TextBlock>
+            <TextBlock Grid.Column="5" Grid.Row="3" Margin="5,0,0,0" Name="resetDate" FontSize="15" VerticalAlignment="Center"></TextBlock>
+
+        </Grid>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" FontSize="20" Margin="20,0,0,0">Details</TextBlock>
+
+        <Grid
+            Grid.Row="5"
+            Margin="{StaticResource MediumLeftRightMargin}"
+            Background="{DynamicResource MahApps.Brushes.Gray10}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="600"/>
+                <ColumnDefinition Width="700"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid
+            Grid.Row="0"
+                Grid.Column="0"
+            Margin="{StaticResource MediumLeftRightMargin}"
+            Background="{DynamicResource MahApps.Brushes.Gray10}">
+                <!--
+            The Mahapps Gray10 color represents where you should place your content.
+            Place your content here.
+            -->
+
+                <DataGrid Name="data_grid_schichts"
+                AutoGenerateColumns="False"
+                GridLinesVisibility="Horizontal"
+                CanUserAddRows="False"
+                ItemsSource="{Binding schichtList}"
+                Margin="0,0,0,10"
+                KeyboardNavigation.TabNavigation="Once"
+                SelectionMode="Single"
+                SelectionChanged="data_grid_schichts_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Kunde" Binding="{Binding Costumer}" Width="150"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Start" Width="150" Binding="{Binding Start, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ende" Width="150" Binding="{Binding End, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}"></DataGridTextColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+
+            </Grid>
+
+            <Grid
+            Grid.Row="0"
+                Grid.Column="1"
+            Margin="{StaticResource MediumLeftRightMargin}"
+            Background="{DynamicResource MahApps.Brushes.Gray10}">
+                <!--
+            The Mahapps Gray10 color represents where you should place your content.
+            Place your content here.
+            -->
+
+                <DataGrid Name="data_grid_tasks"
+                AutoGenerateColumns="False"
+                GridLinesVisibility="Horizontal"
+                CanUserAddRows="False"
+                ItemsSource="{Binding taskList}"
+                Margin="0,0,0,10"
+                KeyboardNavigation.TabNavigation="Once"
+                SelectionMode="Single"
+                >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Tätigkeit" Binding="{Binding Name}" Width="150"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Start" Width="150" Binding="{Binding Start, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ende" Width="150" Binding="{Binding End, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}"></DataGridTextColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Page>
