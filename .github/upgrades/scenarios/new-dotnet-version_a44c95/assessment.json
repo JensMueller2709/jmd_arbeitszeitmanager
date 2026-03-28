@@ -1,0 +1,315 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-03-28T21:14:24.4091255Z",
+  "analysisEndTime": "2026-03-28T21:14:30.0257862Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 3,
+      "issues": 4,
+      "incidents": 6,
+      "effort": 6
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 2,
+        "Optional": 2,
+        "Potential": 2,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 4,
+        "Project": 2
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "JMD_Arbeitszeitmanager.Core\\JMD_Arbeitszeitmanager.Core.csproj",
+      "startingProject": true,
+      "issues": 2,
+      "storyPoints": 2,
+      "properties": {
+        "appName": "JMD_Arbeitszeitmanager.Core",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "netstandard2.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 7,
+        "numberOfCodeFiles": 7,
+        "linesTotal": 202,
+        "linesOfCode": 202,
+        "totalApiScanned": 326,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "17b8f8f7-0e27-4288-ab3e-18dff45cc87c",
+          "ruleId": "NuGet.0002",
+          "projectPath": "JMD_Arbeitszeitmanager.Core\\JMD_Arbeitszeitmanager.Core.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Newtonsoft.Json, 12.0.3\n\nEmpfehlung:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+              "protected": "Newtonsoft.Json, 12.0.3\n\nEmpfehlung:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4"
+            },
+            "kind": "File",
+            "path": "JMD_Arbeitszeitmanager.Core\\JMD_Arbeitszeitmanager.Core.csproj",
+            "snippet": "Newtonsoft.Json, 12.0.3\n\nEmpfehlung:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+            "protectedSnippet": "Newtonsoft.Json, 12.0.3\n\nEmpfehlung:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+            "label": "Newtonsoft.Json 12.0.3",
+            "properties": {
+              "PackageId": "Newtonsoft.Json",
+              "PackageVersion": "12.0.3",
+              "PackageNewVersion": "13.0.4",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "a1de887e-7ed1-407d-b23f-c708a5c6ca1a",
+          "ruleId": "NuGet.0004",
+          "projectPath": "JMD_Arbeitszeitmanager.Core\\JMD_Arbeitszeitmanager.Core.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Newtonsoft.Json, 12.0.3\n\nEmpfehlung:\n\nNewtonsoft.Json, 13.0.4",
+              "protected": "Newtonsoft.Json, 12.0.3\n\nEmpfehlung:\n\nNewtonsoft.Json, 13.0.4"
+            },
+            "kind": "File",
+            "path": "JMD_Arbeitszeitmanager.Core\\JMD_Arbeitszeitmanager.Core.csproj",
+            "snippet": "Newtonsoft.Json, 12.0.3\n\nEmpfehlung:\n\nNewtonsoft.Json, 13.0.4",
+            "protectedSnippet": "Newtonsoft.Json, 12.0.3\n\nEmpfehlung:\n\nNewtonsoft.Json, 13.0.4",
+            "label": "Newtonsoft.Json 12.0.3",
+            "properties": {
+              "PackageId": "Newtonsoft.Json",
+              "PackageVersion": "12.0.3",
+              "PackageNewVersion": "13.0.4",
+              "PackageReplacements": null
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "JMD_Arbeitszeitmanager\\JMD_Arbeitszeitmanager.csproj",
+      "startingProject": true,
+      "issues": 3,
+      "storyPoints": 3,
+      "properties": {
+        "appName": "JMD_Arbeitszeitmanager",
+        "projectKind": "Wpf",
+        "frameworks": [
+          "netcoreapp3.1"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 45,
+        "numberOfCodeFiles": 43,
+        "linesTotal": 3560,
+        "linesOfCode": 3227,
+        "totalApiScanned": 0,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "db5cf8ac-83f5-4fae-b0ce-d18df288d46a",
+          "ruleId": "NuGet.0002",
+          "projectPath": "JMD_Arbeitszeitmanager\\JMD_Arbeitszeitmanager.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Hosting, 5.0.0\n\nEmpfehlung:\n\nRemove Microsoft.Extensions.Hosting, and replace with new package Microsoft.Extensions.Hosting 10.0.5",
+              "protected": "Microsoft.Extensions.Hosting, 5.0.0\n\nEmpfehlung:\n\nRemove Microsoft.Extensions.Hosting, and replace with new package Microsoft.Extensions.Hosting 10.0.5"
+            },
+            "kind": "File",
+            "path": "JMD_Arbeitszeitmanager\\JMD_Arbeitszeitmanager.csproj",
+            "snippet": "Microsoft.Extensions.Hosting, 5.0.0\n\nEmpfehlung:\n\nRemove Microsoft.Extensions.Hosting, and replace with new package Microsoft.Extensions.Hosting 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.Hosting, 5.0.0\n\nEmpfehlung:\n\nRemove Microsoft.Extensions.Hosting, and replace with new package Microsoft.Extensions.Hosting 10.0.5",
+            "label": "Microsoft.Extensions.Hosting 5.0.0",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Hosting",
+              "PackageVersion": "5.0.0",
+              "PackageNewVersion": "10.0.5",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "a22817bd-d51f-4553-984a-e7064491be83",
+          "ruleId": "NuGet.0005",
+          "projectPath": "JMD_Arbeitszeitmanager\\JMD_Arbeitszeitmanager.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Hosting, 5.0.0\n\nEmpfehlung:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove Microsoft.Extensions.Hosting, and replace with new package Microsoft.Extensions.Hosting, 10.0.5",
+              "protected": "Microsoft.Extensions.Hosting, 5.0.0\n\nEmpfehlung:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove Microsoft.Extensions.Hosting, and replace with new package Microsoft.Extensions.Hosting, 10.0.5"
+            },
+            "kind": "File",
+            "path": "JMD_Arbeitszeitmanager\\JMD_Arbeitszeitmanager.csproj",
+            "snippet": "Microsoft.Extensions.Hosting, 5.0.0\n\nEmpfehlung:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove Microsoft.Extensions.Hosting, and replace with new package Microsoft.Extensions.Hosting, 10.0.5",
+            "protectedSnippet": "Microsoft.Extensions.Hosting, 5.0.0\n\nEmpfehlung:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove Microsoft.Extensions.Hosting, and replace with new package Microsoft.Extensions.Hosting, 10.0.5",
+            "label": "Microsoft.Extensions.Hosting 5.0.0",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Hosting",
+              "PackageVersion": "5.0.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "6f55b40c-37b2-4c50-a0b6-5c4b7f709b5a",
+          "ruleId": "Project.0002",
+          "projectPath": "JMD_Arbeitszeitmanager\\JMD_Arbeitszeitmanager.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Aktuelles Zielframework: netcoreapp3.1\nEmpfohlenes Zielframework: net10.0-windows",
+              "protected": "Aktuelles Zielframework: netcoreapp3.1\nEmpfohlenes Zielframework: net10.0-windows"
+            },
+            "kind": "File",
+            "path": "JMD_Arbeitszeitmanager\\JMD_Arbeitszeitmanager.csproj",
+            "snippet": "Aktuelles Zielframework: netcoreapp3.1\nEmpfohlenes Zielframework: net10.0-windows",
+            "protectedSnippet": "Aktuelles Zielframework: netcoreapp3.1\nEmpfohlenes Zielframework: net10.0-windows",
+            "properties": {
+              "CurrentTargetFramework": "netcoreapp3.1",
+              "RecommendedTargetFramework": "net10.0-windows"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "JMD_ArbeitszeitmanagerTests\\JMD_ArbeitszeitmanagerTests.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "JMD_ArbeitszeitmanagerTests",
+        "projectKind": "DotNetCoreApp",
+        "frameworks": [
+          "netcoreapp3.1"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 6,
+        "numberOfCodeFiles": 1,
+        "linesTotal": 5908,
+        "linesOfCode": 189,
+        "totalApiScanned": 697,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "7a448b45-776a-4692-a82c-8a54fa74660b",
+          "ruleId": "Project.0002",
+          "projectPath": "JMD_ArbeitszeitmanagerTests\\JMD_ArbeitszeitmanagerTests.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Aktuelles Zielframework: netcoreapp3.1\nEmpfohlenes Zielframework: net10.0",
+              "protected": "Aktuelles Zielframework: netcoreapp3.1\nEmpfohlenes Zielframework: net10.0"
+            },
+            "kind": "File",
+            "path": "JMD_ArbeitszeitmanagerTests\\JMD_ArbeitszeitmanagerTests.csproj",
+            "snippet": "Aktuelles Zielframework: netcoreapp3.1\nEmpfohlenes Zielframework: net10.0",
+            "protectedSnippet": "Aktuelles Zielframework: netcoreapp3.1\nEmpfohlenes Zielframework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "netcoreapp3.1",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "F\u00FCr das ausgew\u00E4hlte Zielframework wird ein NuGet-Paketupgrade empfohlen.\n\nStandardm\u00E4\u00DFige .NET-Pakete werden empfohlen, um Versionen zu verwenden, die der Version von .NET entsprechen, auf die das Projekt abzielt.\n\nAuch einige andere Pakete funktionieren f\u00FCr die ausgew\u00E4hlten Zielframeworks bekanntlich besser.",
+      "label": "Ein NuGet-Paketupgrade wird empfohlen",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0004": {
+      "id": "NuGet.0004",
+      "isFeature": false,
+      "description": "Das NuGet-Paket enth\u00E4lt Sicherheitsrisiken.\n\nF\u00FCr das Paket muss ein Upgrade auf eine neuere Version durchgef\u00FChrt werden, die bekannte Sicherheitsrisiken behandelt.",
+      "label": "Das NuGet-Paket enth\u00E4lt Sicherheitsrisiken",
+      "severity": "Optional",
+      "effort": 1
+    },
+    "NuGet.0005": {
+      "id": "NuGet.0005",
+      "isFeature": false,
+      "description": "Das NuGet-Paket ist veraltet.\n\nWechseln Sie zur Dokumentation, und wenn ein Leitfaden zum Ersetzen der von diesem Paket bereitgestellten Funktionen vorhanden ist.",
+      "label": "Das NuGet-Paket ist veraltet",
+      "severity": "Optional",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262531",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Die Zielframeworks des Projekts m\u00FCssen in das neue Zielframework ge\u00E4ndert werden, das Sie f\u00FCr dieses Upgrade ausgew\u00E4hlt haben.\n\nW\u00E4hrend des Upgrades wird das Zielframework an die entsprechende Plattform angepasst, falls zutreffend. In einigen F\u00E4llen, f\u00FChrte das Upgrade des Projekts zu mehreren Zielframeworks, wenn es Features verwendete, die jetzt \u00FCber eigene Plattformen in modernen .NET-Frameworks (Windows, iOS, Android usw.) verf\u00FCgen.",
+      "label": "Die Zielframeworks des Projekts m\u00FCssen ge\u00E4ndert werden",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "\u00DCbersicht \u00FCber das Portieren von .NET\u00A0Framework zu .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET-Projekt-SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}
