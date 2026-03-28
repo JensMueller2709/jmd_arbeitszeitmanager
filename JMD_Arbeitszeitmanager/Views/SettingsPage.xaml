@@ -102,8 +102,31 @@
 
                     <Button Name="btn_save" Click="btn_save_Click" Width="200" HorizontalAlignment="Left">Speichern</Button>
                     <Button Name="btn_cancel" Click="btn_cancel_Click" Width="200" HorizontalAlignment="Left">Abbrechen</Button>
-                    
+
                 </StackPanel>
+
+                <Separator Margin="40"/>
+
+                <TextBlock
+                    Margin="{StaticResource SmallTopMargin}"
+                    Style="{StaticResource SubtitleTextStyle}"
+                    Text="Kunden ausblenden" />
+                <TextBlock
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{StaticResource BodyTextStyle}"
+                    Text="Geben Sie den Namen eines Kunden ein, der in der Übersicht und bei Berechnungen ausgeblendet werden soll." />
+
+                <StackPanel Orientation="Horizontal" Margin="{StaticResource SmallTopBottomMargin}">
+                    <TextBox Name="tb_hiddenCostumerName" Width="300" FontSize="15" VerticalAlignment="Center" />
+                    <Button Name="btn_addHiddenCostumer" Click="btn_addHiddenCostumer_Click" Margin="10,0,0,0" Width="150">Ausblenden</Button>
+                </StackPanel>
+
+                <TextBlock
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{StaticResource BodyTextStyle}"
+                    Text="Aktuell ausgeblendete Kunden:" />
+                <ListBox Name="lb_hiddenCostumers" MinHeight="60" MaxHeight="200" Margin="{StaticResource XSmallTopMargin}" />
+                <Button Name="btn_removeHiddenCostumer" Click="btn_removeHiddenCostumer_Click" Width="200" HorizontalAlignment="Left" Margin="{StaticResource XSmallTopMargin}">Wieder einblenden</Button>
 
                 <Separator Margin="40"/>
 

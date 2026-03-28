@@ -208,7 +208,14 @@ namespace JMD_Arbeitszeitmanager.Views
 
         private static bool isValidCustomer(string c)
         {
-            return c != "Sonstige" && c != "ELPS" && !c.Contains("test") && !c.Contains("Test");
+            if (c == "Sonstige" || c == "ELPS" || c.Contains("test") || c.Contains("Test"))
+                return false;
+
+            var hiddenCostumers = Services.SettingsService.GetHiddenCostumers();
+            if (hiddenCostumers.Any(h => h.Equals(c, StringComparison.OrdinalIgnoreCase)))
+                return false;
+
+            return true;
         }
 
         private void filterWorkingTimes(Dictionary<string, Dictionary<string, WorkingDayInfo>> filtered_workingTimesOfWorkers, string workerId, double filter, string filterWorker)
