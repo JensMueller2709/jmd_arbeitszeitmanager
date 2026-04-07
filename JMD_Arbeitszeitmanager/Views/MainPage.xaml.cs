@@ -139,7 +139,7 @@ namespace JMD_Arbeitszeitmanager.Views
             {
                 if (isValidCustomer(c))
                 {
-                    addColumnToGrid(i, 0, c, true);
+                    addColumnToGrid(i, 0, c, true, isCustomerHeader: true);
                     i += 1;
                 }
 
@@ -208,7 +208,14 @@ namespace JMD_Arbeitszeitmanager.Views
 
         private static bool isValidCustomer(string c)
         {
-            return c != "Sonstige" && c != "ELPS" && !c.Contains("test") && !c.Contains("Test");
+            if (c == "Sonstige" || c == "ELPS" || c.Contains("test") || c.Contains("Test"))
+                return false;
+
+            var hiddenCostumers = Services.SettingsService.GetHiddenCostumers();
+            if (hiddenCostumers.Any(h => h.Equals(c, StringComparison.OrdinalIgnoreCase)))
+                return false;
+
+            return true;
         }
 
         private void filterWorkingTimes(Dictionary<string, Dictionary<string, WorkingDayInfo>> filtered_workingTimesOfWorkers, string workerId, double filter, string filterWorker)
@@ -303,11 +310,11 @@ namespace JMD_Arbeitszeitmanager.Views
             gridWorkingTimes.Children.Add(cellText);
         }
 
-        private void addColumnToGrid(int row, int col, string text, bool bold = false)
+        private void addColumnToGrid(int row, int col, string text, bool bold = false, bool isCustomerHeader = false)
         {
             ColumnDefinition gridCol = new ColumnDefinition();
             gridWorkingTimes.ColumnDefinitions.Add(gridCol);
-            
+
 
             TextBlock txtBlockCostumer = new TextBlock();
             txtBlockCostumer.Text = text;
@@ -315,16 +322,50 @@ namespace JMD_Arbeitszeitmanager.Views
             txtBlockCostumer.VerticalAlignment = VerticalAlignment.Top;
             txtBlockCostumer.HorizontalAlignment = HorizontalAlignment.Left;
             txtBlockCostumer.Width = 90;
-            
+
 
             if (bold)
             {
                 txtBlockCostumer.FontWeight = FontWeights.Bold;
             }
+
+            if (isCustomerHeader)
+            {
+                txtBlockCostumer.Cursor = System.Windows.Input.Cursors.Hand;
+                txtBlockCostumer.ToolTip = "Rechtsklick um Kunde auszublenden";
+                var menuItem = new MenuItem { Header = "Ausblenden" };
+                menuItem.Click += (s, e) => hideCustomer(text);
+                txtBlockCostumer.ContextMenu = new ContextMenu { Items = { menuItem } };
+            }
+
             Grid.SetRow(txtBlockCostumer, col);
             Grid.SetColumn(txtBlockCostumer, row);
 
             gridWorkingTimes.Children.Add(txtBlockCostumer);
+        }
+
+        private void hideCustomer(string customerName)
+        {
+            var result = MessageBox.Show(
+                $"Möchten Sie den Kunden \"{customerName}\" ausblenden?",
+                "Kunde ausblenden",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                var hiddenCostumers = Services.SettingsService.GetHiddenCostumers();
+                if (!hiddenCostumers.Any(h => h.Equals(customerName, StringComparison.OrdinalIgnoreCase)))
+                {
+                    hiddenCostumers.Add(customerName);
+                    Services.SettingsService.SaveHiddenCostumers(hiddenCostumers);
+                }
+
+                gridWorkingTimes.Children.Clear();
+                gridWorkingTimes.RowDefinitions.Clear();
+                gridWorkingTimes.ColumnDefinitions.Clear();
+                createDataGrid();
+            }
         }
 
         private void calcWorkingTimes()

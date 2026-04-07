@@ -1,12 +1,44 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Collections.Specialized;
+using System.Linq;
 
 namespace JMD_Arbeitszeitmanager.Services
 {
     public class SettingsService
     {
+        private const string HiddenCostumersKey = "HiddenCostumers";
+
+        public static List<string> GetHiddenCostumers()
+        {
+            if (App.Current.Properties.Contains(HiddenCostumersKey))
+            {
+                string value = App.Current.Properties[HiddenCostumersKey].ToString();
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    return value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                               .Select(s => s.Trim())
+                               .ToList();
+                }
+            }
+            return new List<string>();
+        }
+
+        public static void SaveHiddenCostumers(List<string> hiddenCostumers)
+        {
+            string value = string.Join(",", hiddenCostumers);
+            if (App.Current.Properties.Contains(HiddenCostumersKey))
+            {
+                App.Current.Properties[HiddenCostumersKey] = value;
+            }
+            else
+            {
+                App.Current.Properties.Add(HiddenCostumersKey, value);
+            }
+        }
+
 
         public static void ReadAllSettings()
         {

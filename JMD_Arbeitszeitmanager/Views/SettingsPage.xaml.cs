@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -57,6 +59,7 @@ namespace JMD_Arbeitszeitmanager.Views
             _isInitialized = true;
 
             initDatabaseParameters();
+            LoadHiddenCostumers();
         }
 
         public void OnNavigatedFrom()
@@ -178,6 +181,53 @@ namespace JMD_Arbeitszeitmanager.Views
         private void btn_chooseFileSslCert_Click(object sender, RoutedEventArgs e)
         {
             chooseFile(tb_sslCert);
+        }
+
+        private void LoadHiddenCostumers()
+        {
+            lb_hiddenCostumers.Items.Clear();
+            var hiddenCostumers = SettingsService.GetHiddenCostumers();
+            foreach (var costumer in hiddenCostumers)
+            {
+                lb_hiddenCostumers.Items.Add(costumer);
+            }
+        }
+
+        private void btn_addHiddenCostumer_Click(object sender, RoutedEventArgs e)
+        {
+            var name = tb_hiddenCostumerName.Text?.Trim();
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                MessageBox.Show("Bitte einen Kundennamen eingeben.");
+                return;
+            }
+
+            var hiddenCostumers = SettingsService.GetHiddenCostumers();
+            if (hiddenCostumers.Any(h => h.Equals(name, StringComparison.OrdinalIgnoreCase)))
+            {
+                MessageBox.Show($"Der Kunde \"{name}\" ist bereits ausgeblendet.");
+                return;
+            }
+
+            hiddenCostumers.Add(name);
+            SettingsService.SaveHiddenCostumers(hiddenCostumers);
+            LoadHiddenCostumers();
+            tb_hiddenCostumerName.Text = string.Empty;
+        }
+
+        private void btn_removeHiddenCostumer_Click(object sender, RoutedEventArgs e)
+        {
+            if (lb_hiddenCostumers.SelectedItem == null)
+            {
+                MessageBox.Show("Bitte einen Kunden aus der Liste auswählen.");
+                return;
+            }
+
+            var selected = lb_hiddenCostumers.SelectedItem.ToString();
+            var hiddenCostumers = SettingsService.GetHiddenCostumers();
+            hiddenCostumers.RemoveAll(c => c.Equals(selected, StringComparison.OrdinalIgnoreCase));
+            SettingsService.SaveHiddenCostumers(hiddenCostumers);
+            LoadHiddenCostumers();
         }
     }
 }
