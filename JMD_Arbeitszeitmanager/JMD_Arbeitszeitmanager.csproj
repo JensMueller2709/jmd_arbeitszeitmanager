@@ -7,7 +7,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Logo_JMD.ico</ApplicationIcon>
     <Version>1.2.0</Version>
-    <Platforms>AnyCPU;ARM64</Platforms>
+    <Platforms>AnyCPU;ARM64;x64</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Assets\Images\logo_jmd.png" />
